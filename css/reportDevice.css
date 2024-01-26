@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(86, 86, 86);
+}
+
+.reportDeviceCon {
+    width: 50vw;
+    position: absolute;
+    right: 230px;
+    top:100px;
+    height: 500px;
+    background-color: rgb(253, 253, 253);
+    border-radius: 20px;
+    padding: 10px;
+    padding-top: 50px;
+    box-shadow: 15px 15px 15px #e7e7e7;
+}
+
+.reportDeviceCon fieldset{
+    border: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.reportDeviceCon .leftPanel {
+    width: 40%;
+}
+
+.reportDeviceCon .rightPanel {
+    width: 40%;
+}
+
+.reportDeviceCon textarea {
+    border: 1px solid rgb(232, 232, 232);
+    outline: none;
+}
+
+.rightPanel p {
+    font-size: 15px;
+}
+
+.rightPanel div {
+    padding: 6px;
+}
+
+.reportDeviceCon .submitContainer {
+    margin-top: 25px;
+}
+
+.reportDeviceCon .submitContainer input {
+    padding: 14px 40px;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    background-color: rgb(59, 59, 59);
+}

@@ -1,0 +1,158 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-panel{
+    width: 78vw;
+    background-color: rgb(35, 35, 35);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: -1;
+    right: 0;
+}
+
+.panelForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.panelForm input {
+    width: 150px;
+    padding: 0px 12px 8px 12px;
+    border: none;
+    margin: 10px;
+    background-color: rgb(35, 35, 35);
+    color: rgb(234, 234, 234);
+    border-bottom: 1px solid rgb(234, 234, 234);
+}
+
+.searchContainer{
+    margin-left: 150px;
+}
+
+.mainContainer {
+    display: flex;
+}
+
+.con {
+    width: 70vw;
+    position: absolute;
+    right: 80px;
+    top:100px;
+    height: 500px;
+}
+
+table{
+    border-spacing:0; 
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+tr th{
+    font-family: Roboto;
+    font-size: 17px;
+    text-align: center;
+    border-bottom: 2px solid black;
+    padding: 8px;
+} 
+tr td{
+    font-family: Roboto;
+    font-size: 14px;
+    padding: 7px;
+    border-bottom: 1px solid lightgrey;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.allInformation{
+    overflow-y: visible;
+    height: 0;
+    transform: translateY(-100px);
+}
+
+#windowWithDatas{
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(51, 51, 51, 0.777);
+    display: none;
+}
+
+#windowWithDatas #container {
+    width: 50%;
+    position: relative;
+    left: 25%;
+    top: 100px;
+    height: 600px;
+    background-color: rgb(248, 248, 248);
+    box-shadow: 7px 7px 7px #909090;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#windowWithDatas #container #datas {
+    width: 90%;
+    height: 70%;
+    display: flex;
+}
+
+#windowWithDatas #container #datas h2 {
+    color: rgb(63, 63, 63);
+}
+
+#datas .panel{
+    width: 50%;
+    height: 100%;
+}
+
+#datas .panel ul {
+    margin-top: 10px;
+    padding-left: 15px;
+}
+#datas .panel ul li {
+    list-style: none;
+    margin-top: 5px;
+}
+
+#rightPanel {
+    border-left: 2px solid grey;
+}
+
+#windowWithDatas .btnContainer {
+    width: 50%;
+    position: relative;
+    left: 25%; 
+    display:flex;
+    justify-content:center; 
+    margin-top:20px;
+}
+
+#windowWithDatas .btnContainer input{
+    width: 150px;
+    border-radius: 6px;
+    border: none;
+    padding: 10px 8px;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    margin: 5px;
+}
+
+.panel ul li input {
+    background-color: rgb(248, 248, 248);
+    border: none;
+    border-bottom: 1px solid rgba(50, 50, 50, 0.542);
+    outline: none;
+    display: none;
+    color: rgb(105, 105, 105);
+}

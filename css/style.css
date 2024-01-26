@@ -1,0 +1,72 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+i {
+  margin: 0px 6px;
+}
+div.menuPanel {
+  width: 22vw;
+  height: 100vh;
+  position: fixed;
+  top:0;
+  bottom:0;
+  background-color: black;
+  text-align: center;
+}
+
+div.menuPanel p {
+  text-align: Center;
+  width: 100%;
+  font-size: 24px;
+  color: white;
+  font-family: Roboto;
+}
+
+div.menuPanel hr {
+  width: 95%;
+  color: white;
+  margin: 15px 5px;
+}
+
+.fa-user-tie {
+  color: white;
+  font-size: 34px;
+  padding: 20px;
+  border: 2px solid white;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+div.menuPanel input[type="button"] {
+  border: 1px solid white;
+  color: white;
+  padding: 8px 14px;
+  outline: none;
+  background-color: black;
+  border-radius: 6px;
+  margin-left: 3px;
+  margin-right: 3px;
+  font-family: Roboto;
+}
+
+div.menuPanel ul {
+  list-style-type: none;
+  margin-top: 30px;
+}
+
+div.menuPanel li {
+  border-bottom: 1px solid white;
+  text-align: left;
+  margin-left: 15px;
+  margin-right: 20px;
+  color: white;
+  font-family: Roboto;
+  padding: 12px;
+  cursor: pointer;
+}
+
+div.menuPanel li a {
+  text-decoration: none;
+  color: white;
+}
