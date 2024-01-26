@@ -14,12 +14,14 @@
 <a href="../P/rejestracja.php"><input type="button" value="Rejestracja"></a>
 <a href="../P/main.php"><input type="button" value="Wylogowanie"></a>
 <ul>
-    <li><a href="../P/dashboard.php">Strona główna</a></li>
-    <li><a href="../P/oddzialy.php"><i class="fa-solid fa-city"></i>Dane Oddziału</a></li>
-    <li><a href="../P/klienci.php"><i class="fa-solid fa-user-group"></i>Klienci serwisu</a></li>
-    <li><a href="../P/addEmplyee.php"><i class="fa-solid fa-person-praying"></i>Pracownicy serwisu</a></li>
-    <li><a href="../P/rejestracjaSprzetu.php">Rejestracja sprzetu</a></li>
-    <li><a href="../P/reportDevice.php">Zgłoszenia</a></li>
-    <li><a href="">Status naprawy</a></li>
+    <form action="leftPanel.php" method="post">
+        <li><a href="../P/dashboard.php">Strona główna</a></li>
+        <li><a href="../P/oddzialy.php"><i class="fa-solid fa-city"></i>Dane Oddziału</a></li>
+        <li><a href="../P/klienci.php"><i class="fa-solid fa-user-group"></i>Klienci serwisu</a></li>
+        <li><a href="../P/addEmplyee.php"><i class="fa-solid fa-person-praying"></i>Pracownicy serwisu</a></li>
+        <li><a href="../P/rejestracjaSprzetu.php">Rejestracja sprzetu</a></li>
+        <li><a href="../P/reportDevice.php">Zgłoszenia</a></li>
+        <li><a href="">Status naprawy</a></li>
+    </form>
 </ul>
 </div>
