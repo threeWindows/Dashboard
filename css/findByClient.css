@@ -1,5 +1,5 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
+/* .mainContainer {
+    display: flex;
 }
 
 .main-panel{
@@ -12,7 +12,7 @@ body {
     position: absolute;
     z-index: -1;
     right: 0;
-}
+} */
 
 .panelForm{
     display: flex;
@@ -34,15 +34,7 @@ body {
 .panelForm li a {
     color: rgb(234, 234, 234);
     text-decoration: none;
-}
-
-.searchContainer{
-    margin-left: 150px;
-}
-
-.mainContainer {
-    display: flex;
-}
+} 
 
 .con {
     width: 70vw;
@@ -75,11 +67,6 @@ tr td{
     text-align: left;
 }
 
-.allInformation{
-    overflow-y: visible;
-    height: 0;
-    transform: translateY(-100px);
-}
 
 #windowWithDatas{
     position: relative;
@@ -161,4 +148,22 @@ tr td{
     outline: none;
     display: none;
     color: rgb(105, 105, 105);
+}
+
+.searchContainer{
+    margin-left: 150px;
+}
+
+.mainContainer {
+    display: flex;
+}
+.main-panel{
+    width: 78vw;
+    background-color: rgb(35, 35, 35);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
 }

@@ -103,12 +103,3 @@ changeData.addEventListener('click', () => {
     el.style.setProperty('display', 'none');
   })
 })
-
-const search = document.getElementById('search');
-const findByClient = document.getElementById('findByClient');
-const btn2 = document.getElementById('btn2');
-
-btn2.addEventListener('click',() => {
-  console.log(search);
-  console.log(findByClient);
-})
