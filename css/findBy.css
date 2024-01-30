@@ -1,18 +1,7 @@
-/* .mainContainer {
-    display: flex;
-}
 
-.main-panel{
-    width: 78vw;
-    background-color: rgb(35, 35, 35);
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    z-index: -1;
-    right: 0;
-} */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 .panelForm{
     display: flex;

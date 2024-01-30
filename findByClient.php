@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="css/findByClient.css">
+<link rel="stylesheet" href="css/findBy.css">
 
 <?php
   include_once('../P/leftPanel.php');
@@ -6,21 +6,18 @@
 
   <div class="mainContainer">
     <div class="main-panel">
-        <ul class="panelForm">
-          <li><a href="findByClient.php">Klient</a></li>
-          <li><a href="findByDepartment.php">Oddział</a></li>
-          <li><a href="">Pracownik</a></li>
-          <li><a href="">Sprzęt</a></li>
-
-          <form action="findByClient.php" method="post" class="searchContainer">
+      <ul class="panelForm">
+        <li><a href="findByClient.php">Klient</a></li>
+        <li><a href="findByDepartment.php">Oddział</a></li>
+        <li><a href="">Pracownik</a></li>
+        <li><a href="">Sprzęt</a></li>
+        <form action="findByClient.php" method="post" class="searchContainer">
           <input type="text" name="search" id="search">
           <input type="submit" value="Wyszukaj">
         </form>
-        </ul>
-        </div>
+      </ul>
+    </div>
   </div>
-
-        
 
         <div class="con">
       <table>
@@ -36,7 +33,7 @@
           $kwerenda = mysqli_prepare($conn, $kw);
           mysqli_stmt_execute($kwerenda);
           mysqli_stmt_bind_result($kwerenda, $idK, $nameK, $lastNameK, $phoneK, $emailK, $businnesK, $streetK, $houseNumbK, $localNumbK, $zipCodeK, $townK, $idS, $serialNumbS, $producentS, $modelS, $categoryS, $idZK, $idZS);
-        
+
           echo "<tr><th>Imię</th><th>Nazwisko</th><th>Numer telefonu</th><th>Email</th></tr>";
           while(mysqli_stmt_fetch($kwerenda)) {
             echo"
@@ -65,26 +62,6 @@
             ";
           }
         };
-
-        function allDepartments($kw) {
-          $conn = mysqli_connect(host,user,pass);
-          $baza = mysqli_select_db($conn, 'serwis3ct');
-
-          $kwerenda = mysqli_prepare($conn, $kw);
-          mysqli_stmt_execute($kwerenda);
-          mysqli_stmt_bind_result($kwerenda, $idO, $depName, $depStreet, $depHome, $depLocal, $depZipCode, $depTown, $depTelephone, $depEmail);
-        
-          echo "<tr><th>Nazwa oddziału</th><th>Telefon</th><th>Email</th></tr>";
-          while(mysqli_stmt_fetch($kwerenda)) {
-            echo"
-              <tr class='element' index='$idO'>
-                <td>$depName</td>
-                <td>$depTelephone</td>
-                <td>$depEmail</td>
-              </tr>
-            ";
-          }
-        };
       
           if(isset($_POST['search'])) {
             $search = $_POST['search'];
@@ -95,7 +72,6 @@
             } 
           } else {
             AllClients("SELECT klient.id_klienta, klient.imie_k, klient.nazwisko_k, klient.telefon_k, klient.email_k, klient.firma_k, klient.ulica_k, klient.numerDomu_k, klient.numerLokalu_k, klient.kodPocztowy_k, klient.miejscowosc_k, sprzet.id_sprzetu, sprzet.nr_seryjny, sprzet.producent, sprzet.model, sprzet.kategoria, zgloszenia.id_klienta, zgloszenia.id_sprzetu FROM klient INNER JOIN zgloszenia ON klient.id_klienta = zgloszenia.id_klienta INNER JOIN sprzet ON zgloszenia.id_sprzetu = sprzet.id_sprzetu GROUP BY telefon_k ORDER BY nazwisko_k ASC");
-
           }
       ?>
       </table>
@@ -131,10 +107,37 @@
         </div>
       </div>
       <div class="btnContainer">
-        <input type="button" value="Aktualizuj dane" id="changeData">
-        <input type="button" value="Wyjdź" id="leave">
-        <input type="button" value="Usuń użytkownika" id="delateUser">
+        <form action="findByClient.php" method="post">
+          <input type="button" value="Aktualizuj dane" name="updateData" id="changeData">
+          <input type="submit" value="Zatwierdź" name="changeUpdatedData" id="changeUpdatedData" style="display: none;">
+          <input type="button" value="Wyjdź" id="leave">
+          <input type='submit' value='Usuń użytkownika' name='delateUser' id='delateUser'>
+        </form>
       </div>
     </div>
 
-    <script src="js/dashboard.js"></script>
+    <?php
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if(isset($_POST['delateUser'])) {
+
+      $indexValue = $_POST["delateUser"];
+  
+      $clientIndexDelate = $indexValue; //index klienta
+      $clientIndexDelate = intval($clientIndexDelate);
+
+      }
+
+      if(isset($_POST['changeUpdatedData'])) {
+        $changeIndexValue = $_POST["changeUpdatedData"];
+  
+        $changeClientData = $changeIndexValue; //index klienta
+        $changeClientData = intval($changeClientData);
+
+        echo $changeClientData;
+      }
+    }
+    ?>
+
+
+    <script src="js/findByClient.js"></script>

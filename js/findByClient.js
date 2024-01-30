@@ -17,13 +17,14 @@ const notCategory = document.getElementById('notCategory');
 const changeValueInputs = document.querySelectorAll(".panel ul li input");
 const span = document.querySelectorAll(".panel ul li span");
 
-const leave = document.getElementById('leave');
-const changeData = document.getElementById('changeData');
-const delateUser = document.getElementById('delateUser');
+
+var index;
 
 element.forEach(function (el) {
   el.addEventListener('click', () => {
     windowWithDatas.style.setProperty('display', 'block');
+
+    index = el.getAttribute('index');
 
     var name = el.getAttribute('name');
     var lastName = el.getAttribute('lastName');
@@ -55,6 +56,11 @@ element.forEach(function (el) {
   })
 });
 
+
+const leave = document.getElementById('leave');
+const changeUpdatedData = document.getElementById('changeUpdatedData');
+const changeData = document.getElementById('changeData');
+
 leave.addEventListener('click', () => {
   windowWithDatas.style.setProperty('display', 'none');
 
@@ -66,9 +72,12 @@ leave.addEventListener('click', () => {
     el.style.setProperty('display', 'none');
   })
 
+  changeUpdatedData.style.setProperty('display', 'none');
+  changeData.style.setProperty('display', 'inline-block');
 })
 
 changeData.addEventListener('click', () => {
+
   for(let i=0;i<changeValueInputs.length;i++) {
     changeValueInputs[i].style.setProperty('display', 'inline-block');
     element.forEach(function (el) {
@@ -99,7 +108,43 @@ changeData.addEventListener('click', () => {
     });
   }
 
+  changeUpdatedData.style.setProperty('display', 'inline-block');
+  changeData.style.setProperty('display', 'none');
+
   span.forEach((el) => {
     el.style.setProperty('display', 'none');
   })
+})
+
+changeUpdatedData.addEventListener('click', () => {
+  changeUpdatedData.setAttribute('value', index);
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "findByClient.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      console.log(xhr.responseText);
+    }
+  };
+
+  xhr.send("index=" + index);
+})
+
+
+const delateUser = document.getElementById('delateUser');
+
+delateUser.addEventListener('click', () => {
+  delateUser.setAttribute('value', index);
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "findByClient.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      console.log(xhr.responseText);
+    }
+  };
+
+  xhr.send("index=" + index);
 })
