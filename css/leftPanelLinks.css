@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#a {
+    width: 78vw;
+    position: absolute;
+    right: 0;
+}
+
+.con {
+    width: 70vw;
+    position: relative;
+    top:100px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-container {
+    width: 50vw;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 7px 7px 7px #acacac;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+}
+
+.form-container form {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.form-container form fieldset label {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form-container form fieldset input {
+    padding: 10px 35px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.form-container fieldset{
+    border: none;
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+table{
+    border-spacing:0; 
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+tr th{
+    font-family: Roboto;
+    font-size: 17px;
+    text-align: center;
+    border-bottom: 2px solid black;
+    padding: 8px;
+} 
+tr td{
+    font-family: Roboto;
+    font-size: 14px;
+    padding: 7px;
+    border-bottom: 1px solid lightgrey;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+input[type='submit'] {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background-color: #323232;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+}
+
+.dept-data {
+    margin-top: 100px;
+}

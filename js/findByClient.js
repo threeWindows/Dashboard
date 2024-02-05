@@ -14,11 +14,12 @@ const notProducent = document.getElementById('notProducent');
 const notModel = document.getElementById('notModel');
 const notCategory = document.getElementById('notCategory');
 
-const changeValueInputs = document.querySelectorAll(".panel ul li input");
 const span = document.querySelectorAll(".panel ul li span");
 
 
 var index;
+const changeData = document.getElementById('changeData');
+const changeValueInputs = document.querySelectorAll(".panel ul li input");
 
 element.forEach(function (el) {
   el.addEventListener('click', () => {
@@ -53,13 +54,40 @@ element.forEach(function (el) {
     notProducent.textContent = producentS;
     notModel.textContent = modelS;
     notCategory.textContent = categoryS;
+
+    changeData.addEventListener('click', () => {
+  
+      changeValueInputs.forEach(el => {
+        el.style.setProperty('display', 'inline-block');
+      })
+    
+      for(let i=0;i<changeValueInputs.length;i++) {
+            changeValueInputs[0].value = phone;
+            changeValueInputs[1].value = email;
+            changeValueInputs[2].value = businnes;
+            changeValueInputs[3].value = `${street} ${houseNumbK} ${localNumbK}`;
+            changeValueInputs[4].value = zipCodeK;
+            changeValueInputs[5].value = townK;
+    
+            changeValueInputs[6].value = serialNumbS;
+            changeValueInputs[7].value = producentS;
+            changeValueInputs[8].value = modelS;
+            changeValueInputs[9].value = categoryS;
+      }
+        
+      changeUpdatedData.style.setProperty('display', 'inline-block');
+      changeData.style.setProperty('display', 'none');
+    
+      span.forEach((el) => {
+        el.style.setProperty('display', 'none');
+      })
+    })
   })
 });
 
 
 const leave = document.getElementById('leave');
 const changeUpdatedData = document.getElementById('changeUpdatedData');
-const changeData = document.getElementById('changeData');
 
 leave.addEventListener('click', () => {
   windowWithDatas.style.setProperty('display', 'none');
@@ -74,46 +102,6 @@ leave.addEventListener('click', () => {
 
   changeUpdatedData.style.setProperty('display', 'none');
   changeData.style.setProperty('display', 'inline-block');
-})
-
-changeData.addEventListener('click', () => {
-
-  for(let i=0;i<changeValueInputs.length;i++) {
-    changeValueInputs[i].style.setProperty('display', 'inline-block');
-    element.forEach(function (el) {
-        var phone = el.getAttribute('phone');
-        var email = el.getAttribute('email');
-        var businnes = el.getAttribute('businnes');
-        var street = el.getAttribute('street');
-        var houseNumbK = el.getAttribute('houseNumbK');
-        var localNumbK = el.getAttribute('localNumbK');
-        var zipCodeK = el.getAttribute('zipCodeK');
-        var townK = el.getAttribute('townK');
-        var serialNumbS = el.getAttribute('serialNumbS');
-        var producentS = el.getAttribute('producentS');
-        var modelS = el.getAttribute('modelS');
-        var categoryS = el.getAttribute('categoryS');
-
-        changeValueInputs[0].value = phone;
-        changeValueInputs[1].value = email;
-        changeValueInputs[2].value = businnes;
-        changeValueInputs[3].value = `${street} ${houseNumbK} ${localNumbK}`;
-        changeValueInputs[4].value = zipCodeK;
-        changeValueInputs[5].value = townK;
-
-        changeValueInputs[6].value = serialNumbS;
-        changeValueInputs[7].value = producentS;
-        changeValueInputs[8].value = modelS;
-        changeValueInputs[9].value = categoryS;
-    });
-  }
-
-  changeUpdatedData.style.setProperty('display', 'inline-block');
-  changeData.style.setProperty('display', 'none');
-
-  span.forEach((el) => {
-    el.style.setProperty('display', 'none');
-  })
 })
 
 changeUpdatedData.addEventListener('click', () => {

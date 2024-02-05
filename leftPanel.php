@@ -16,12 +16,13 @@
 <ul>
     <form action="leftPanel.php" method="post">
         <li><a href="../P/dashboard.php">Strona główna</a></li>
-        <li><a href="../P/oddzialy.php"><i class="fa-solid fa-city"></i>Dane Oddziału</a></li>
-        <li><a href="../P/klienci.php"><i class="fa-solid fa-user-group"></i>Klienci serwisu</a></li>
-        <li><a href="../P/addEmplyee.php"><i class="fa-solid fa-person-praying"></i>Pracownicy serwisu</a></li>
-        <li><a href="../P/rejestracjaSprzetu.php">Rejestracja sprzetu</a></li>
+        <li><a href="../P/departments.php"><i class="fa-solid fa-city"></i>Dane Oddziału</a></li>
+        <li><a href="../P/clients.php"><i class="fa-solid fa-user-group"></i>Klienci serwisu</a></li>
+        <li><a href="../P/employee.php"><i class="fa-solid fa-person-praying"></i>Pracownicy serwisu</a></li>
+        <li><a href="../P/device.php">Rejestracja sprzetu</a></li>
         <li><a href="../P/reportDevice.php">Zgłoszenia</a></li>
-        <li><a href="">Status naprawy</a></li>
+        <li><a href="../P/repairStatus.php">Status naprawy</a></li>
+        <li><a href="../P/serviceOperations.php">Czynności serwisowe</a></li>
     </form>
 </ul>
 </div>
