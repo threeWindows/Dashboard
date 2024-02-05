@@ -35,59 +35,67 @@
         <form action="serviceOperations.php" method="post">
             <fieldset>
                 <label>Opis Czynności</label>
-                <textarea name="" cols="55" rows="15"></textarea>
+                <textarea name="service" cols="55" rows="15"></textarea>
             </fieldset>
             <fieldset>
                 <label>Cena</label>
-                <input type="number" name="" id="">
+                <input type="number" name="price" id="">
                 <label>Urządzenie</label>
                 <select name="device">
                     <?php
+                        $selectMaxId = mysqli_prepare($conn, "SELECT id_sprzetu FROM sprzet ORDER BY id_sprzetu DESC LIMIT 1");
+                        mysqli_stmt_execute($selectMaxId);
+                        mysqli_stmt_bind_result($selectMaxId, $i);
+
+                        $maxId = 0;
+
+                        while(mysqli_stmt_fetch($selectMaxId)) {
+                            $maxId = $i;
+                        }
+
                         $selectDevice = mysqli_prepare($conn, "SELECT id_sprzetu, nr_seryjny FROM sprzet");
                         mysqli_stmt_execute($selectDevice);
                         mysqli_stmt_bind_result($selectDevice, $deviceId, $serialNumber);
 
                         while(mysqli_stmt_fetch($selectDevice)) {
-                            echo "<option name='device' value='$deviceId' min='1' max='25'>$serialNumber</option>";
+                            echo "<option name='device' value='$deviceId' min='1' max='$maxId'>$serialNumber</option>";
                         }
                     ?>
                 </select>
             </fieldset>
-        <input type="submit" value='Zarejestruj Oddział' name='sub'>
+        <input type="submit" value='Zarejestruj' name='sub'>
     </form>
   </div>
   <div class="dept-data">
     <?php
     if(isset($_POST['sub'])) {
 
-        $date = $_POST['date'];
-        $status = $_POST['status'];
+        $service = $_POST['service'];
+        $price = $_POST['price'];
         $device = $_POST['device'];
 
-        $addData = mysqli_prepare($conn, "INSERT INTO statusnaprawy VALUES(null,?,?,?)");
-        mysqli_stmt_bind_param($addData, 'ssi',$date,$status,$device);
+        $addData = mysqli_prepare($conn, "INSERT INTO czynnosciserwisowe VALUES(null,?,?,?)");
+        mysqli_stmt_bind_param($addData, 'sii',$service,$price,$device);
         mysqli_stmt_execute($addData);
     }
     ?>
     <table>
     <tr>  
-      <th>Data zmiany</th><th>Status</th><th>Urządzenie</th>
+      <th>Opis Czynności</th><th>Cena</th><th>Urządzenie</th>
     </tr>  
             <?php
-            if(isset($_POST['sub'])) {
-                $kwerenda=mysqli_prepare($conn, "SELECT statusnaprawy.id_statusu, statusnaprawy.data_zmiany, statusnaprawy.stat, statusnaprawy.id_sprzetu, sprzet.id_sprzetu, sprzet.nr_seryjny FROM statusnaprawy INNER JOIN sprzet ON statusnaprawy.id_sprzetu = sprzet.id_sprzetu;");
+                $kwerenda=mysqli_prepare($conn, "SELECT czynnosciserwisowe.id_czynnosci, czynnosciserwisowe.opis_czynnosci, czynnosciserwisowe.cena, czynnosciserwisowe.id_sprzetu, sprzet.id_sprzetu, sprzet.nr_seryjny FROM czynnosciserwisowe INNER JOIN sprzet ON czynnosciserwisowe.id_sprzetu = sprzet.id_sprzetu;");
                 mysqli_stmt_execute($kwerenda);
-                mysqli_stmt_bind_result($kwerenda, $statId, $statDate, $statStat, $statIdS, $devId, $devSerialNumber);
+                mysqli_stmt_bind_result($kwerenda, $serviceId, $serviceDesc, $servicePrice, $serviceIdS, $devId, $devSerialNumber);
                 while(mysqli_stmt_fetch($kwerenda)){
                     echo "
                     <tr>
-                        <td>$statDate</td>
-                        <td>$statStat</td>
+                        <td>$serviceDesc</td>
+                        <td>$servicePrice</td>
                         <td>$devSerialNumber</td>
                     </tr>";
                 }
                 mysqli_close($conn);
-            }
             ?>
         </table>
         </div>

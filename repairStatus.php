@@ -77,7 +77,6 @@
       <th>Data zmiany</th><th>Status</th><th>Urządzenie</th>
     </tr>  
             <?php
-            if(isset($_POST['sub'])) {
                 $kwerenda=mysqli_prepare($conn, "SELECT statusnaprawy.id_statusu, statusnaprawy.data_zmiany, statusnaprawy.stat, statusnaprawy.id_sprzetu, sprzet.id_sprzetu, sprzet.nr_seryjny FROM statusnaprawy INNER JOIN sprzet ON statusnaprawy.id_sprzetu = sprzet.id_sprzetu;");
                 mysqli_stmt_execute($kwerenda);
                 mysqli_stmt_bind_result($kwerenda, $statId, $statDate, $statStat, $statIdS, $devId, $devSerialNumber);
@@ -90,7 +89,7 @@
                     </tr>";
                 }
                 mysqli_close($conn);
-            }
+            
             ?>
         </table>
         </div>

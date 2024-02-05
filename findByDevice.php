@@ -34,7 +34,7 @@
                 mysqli_stmt_execute($kwerenda);
                 mysqli_stmt_bind_result($kwerenda, $devId, $devSerialNumber, $devProducent, $devModel, $devCategory);
 
-                echo "<tr><th>Numer Seryjny</th><th>Producent</th><th>Model</th><th>Kategoria</th></tr>";
+                echo "<tr><th>Numer Seryjny</th><th>Producent</th><th>Model</th><th>Kategoria</th><th>Podgląd</th></tr>";
                 while(mysqli_stmt_fetch($kwerenda)) {
                     echo"
                 <tr class='element' index='$devId'>

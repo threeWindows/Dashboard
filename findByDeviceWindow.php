@@ -117,6 +117,36 @@
             </div>";
         }
 
+        $selectDeviceDescription = mysqli_prepare($conn, "SELECT statusnaprawy.id_statusu, statusnaprawy.data_zmiany, statusnaprawy.stat, statusnaprawy.id_sprzetu, zgloszenia.id_zgloszenia, zgloszenia.opis_zgloszenia, zgloszenia.id_sprzetu, zgloszenia.data_zgloszenia, zgloszenia.data_odbioru, czynnosciserwisowe.id_czynnosci, GROUP_CONCAT(czynnosciserwisowe.opis_czynnosci), SUM(czynnosciserwisowe.cena), czynnosciserwisowe.id_sprzetu FROM statusnaprawy INNER JOIN zgloszenia ON statusnaprawy.id_sprzetu = zgloszenia.id_sprzetu INNER JOIN czynnosciserwisowe ON czynnosciserwisowe.id_sprzetu = statusnaprawy.id_sprzetu WHERE zgloszenia.id_zgloszenia = $index;");
+        mysqli_stmt_execute($selectDeviceDescription);
+        mysqli_stmt_bind_result($selectDeviceDescription, $statId, $statDate, $status, $statIdS, $notId, $notDesc, $notIdS, $notFilingDate, $notReceipeDate, $serviceId, $serviceDesc, $servicePrice, $serviceIdS);
+        while(mysqli_stmt_fetch($selectDeviceDescription)){
+            echo"
+            <div class='dataContainer' i='$statId'>
+                <h2>Opis</h2>
+                <form action='findByDeviceWindow.php' method='post'>
+                    <ul>
+                        <div style='display: none;'>
+                            <input type='text' name='constIndexDev' value='$statId'>
+                        </div>
+                        <li>Data Zmiany: $statDate</li>
+                        <li>Status: $status</li>
+                        <li>Opis Zgłoszenia:</br> $notDesc</li>
+                        </br>
+
+                        <li>Data zgłoszenia: $notFilingDate</li>
+                        <li>Data odbioru: $notReceipeDate</li>
+                        <li>Opis czynności: </br> $serviceDesc</br></li>
+                        </br>
+
+                        <li>Cena całościowa: $servicePrice zł</li>
+                    </ul>
+                    <input type='button' value='Aktualizuj Dane' class='updateDescData' i='devId'>
+                    <input type='submit' value='Zatwierdź' id='confirmDesc' name='confirmDesc'>
+                </form>
+            </div>";
+        }
+
         $selectDepartmentData = mysqli_prepare($conn, "SELECT oddzialy.id_oddzialu, oddzialy.nazwa_od, oddzialy.ulica_od, oddzialy.numer_domu_od, oddzialy.numer_lokalu_od, oddzialy.kod_o, oddzialy.miejscowosc_o, oddzialy.telefon_o, oddzialy.email_o, pracownik.id_oddzialu, zgloszenia.id_pracownika, zgloszenia.id_sprzetu, sprzet.id_sprzetu FROM oddzialy INNER JOIN pracownik ON oddzialy.id_oddzialu = pracownik.id_oddzialu INNER JOIN zgloszenia ON zgloszenia.id_pracownika = pracownik.id_pracownika INNER JOIN sprzet ON zgloszenia.id_sprzetu = sprzet.id_sprzetu WHERE sprzet.id_sprzetu = $index");
         mysqli_stmt_execute($selectDepartmentData);
         mysqli_stmt_bind_result($selectDepartmentData, $depId, $depName, $depStreet, $depHouse, $depLocal, $depZipCode, $depTown, $depTelephone, $depEmail, $empId, $notIdP, $notIdS, $devId);

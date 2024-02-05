@@ -72,7 +72,7 @@
                             mysqli_stmt_bind_result($kwerenda, $idS, $device);
 
                             while(mysqli_stmt_fetch($kwerenda)) {
-                                echo "<option required name='device' min='1' max='25'>$idS <span>$device</span></option>";
+                                echo "<option required name='device' min='1' max='25'>$idS<span>$device</span></option>";
                             }
                         ?>
                     </select>
