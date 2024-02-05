@@ -47,14 +47,14 @@
     .inp2 {
         background-color: rgb(230,230,230);
     }
-    #updateData, input[type='submit'], #updateDepData, .updateDevData, .confirmDevice {
+    #updateData, input[type='submit'], #updateDepData, .updateDevData, .confirmDevice, #updateDescData {
         background-color: rgb(55, 55, 55);
         color: white;
         padding: 11px 25px;
         border-radius: 10px;
         border: none;
     }
-    #confirm, #confirmDepartment, .confirmDevice{
+    #confirm, #confirmDepartment, #confirmDevice, .newDate, #confirmDesc{
         display: none;
     }
 
@@ -129,19 +129,26 @@
                         <div style='display: none;'>
                             <input type='text' name='constIndexDev' value='$statId'>
                         </div>
-                        <li>Data Zmiany: $statDate</li>
-                        <li>Status: $status</li>
+                        <li>Data Zmiany: <span class='changeSpan'>$statDate</span><input type='date' class='newDate'></li>
+                        <li>
+                            Status: <span class='changeSpan'>$status</span>
+                            <select class='newDate'>
+                                <option>Przyjęte w oddziale</option>
+                                <option>W trakcie naprawy</option>
+                                <option>Gotowe do odbioru</option>
+                            </select>
+                        </li>
                         <li>Opis Zgłoszenia:</br> $notDesc</li>
                         </br>
 
                         <li>Data zgłoszenia: $notFilingDate</li>
-                        <li>Data odbioru: $notReceipeDate</li>
+                        <li>Data odbioru: <span class='changeSpan'>$notReceipeDate</span><input type='date' class='newDate'></li>
                         <li>Opis czynności: </br> $serviceDesc</br></li>
                         </br>
 
                         <li>Cena całościowa: $servicePrice zł</li>
                     </ul>
-                    <input type='button' value='Aktualizuj Dane' class='updateDescData' i='devId'>
+                    <input type='button' value='Aktualizuj Dane' id='updateDescData'>
                     <input type='submit' value='Zatwierdź' id='confirmDesc' name='confirmDesc'>
                 </form>
             </div>";

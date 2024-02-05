@@ -113,3 +113,33 @@ updateDevData.forEach(el => {
         el.style.setProperty('display', 'none');
     })
 })
+
+const updateDescData = document.getElementById('updateDescData');
+const changeSpan = document.querySelectorAll('.changeSpan');
+const newDate = document.querySelectorAll('.newDate');
+const confirmDesc = document.getElementById('confirmDesc');
+
+const tab1 = [];
+const tab2 = [];
+
+updateDescData.addEventListener('click', () => {
+    tab1.length = 0;
+    tab2.length = 0; 
+
+    changeSpan.forEach(span => {
+        span.style.setProperty('display', 'none');
+        tab1.push(span.textContent);
+    })
+
+    newDate.forEach(inp => {
+        inp.style.setProperty('display', 'inline-block');
+        tab2.push(inp);
+    })
+
+    for(let x=0;x<tab1.length;x++) {
+        tab2[x].value = tab1[x];
+    }
+
+    updateDescData.style.setProperty('display', 'none');
+    confirmDesc.style.setProperty('display', 'block');
+})
