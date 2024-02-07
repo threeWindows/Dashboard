@@ -94,10 +94,11 @@
   <div id='mainContainer'>
     <div id='secondContainer'>";
     while(mysqli_stmt_fetch($selectDepartmentData)) {
+
       echo"
       <div class='dataContainer'>
           <h2>Dane Oddzialu</h2>
-          <form action='findByEmpWindow.php' method='post'>
+          <form action='findByDepartment.php' method='post'>
               <ul>
                   <div style='display: none;'>
                       <input type='text' name='constIndexDep' value='$depId'>
@@ -127,7 +128,7 @@
             </div>";
       while(mysqli_stmt_fetch($selectEmployeeData)) {
         echo"
-          <form action='findByEmpWindow.php' method='post' class='deviceElement'>
+          <form action='findByDepartment.php' method='post' class='deviceElement'>
             <h2>Dane Pracownika</h2>
             <ul>
               <div style='display: none;'>
@@ -155,7 +156,7 @@
             </div>";
         while(mysqli_stmt_fetch($selectDeviceData)) {
             echo"
-                <form action='findByEmpWindow.php' method='post' class='deviceElement'>
+                <form action='findByDepartment.php' method='post' class='deviceElement'>
                 <h2>Dane Urządzenia</h2>
                     <ul>
                         <div style='display: none;'>

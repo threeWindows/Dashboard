@@ -1,23 +1,44 @@
 <?php
-
 define('host', 'localhost');
 define('user', 'root');
 define('pass', '');
 
-$conn=mysqli_connect(host, user, pass);
-$baza=mysqli_select_db($conn, 'serwis3ct');
+$conn = mysqli_connect(host,user,pass);
+$baza = mysqli_select_db($conn, 'serwis3ct');
 
-$selectMaxId = mysqli_prepare($conn, "SELECT id_sprzetu FROM sprzet ORDER BY id_sprzetu DESC LIMIT 1");
-mysqli_stmt_execute($selectMaxId);
-mysqli_stmt_bind_result($selectMaxId, $maxId);
 
-$i = 0;
+if(isset($_POST['confirmClient'])) {
+    $constIndexClient = $_POST['constIndexClient'];
+    $changeName = $_POST['changeName'];
+    $changeLastName = $_POST['changeLastName'];
+    $changeTelephone = $_POST['changeTelephone'];
+    $changeEmail = $_POST['changeEmail'];
+    $changeBusinnes = $_POST['changeBusinnes'];
+    $changeStreet = $_POST['changeStreet'];
+    $changeHouse = $_POST['changeHouse'];
+    $changeLocal = $_POST['changeLocal'];
+    $changeZipCode = $_POST['changeZipCode'];
+    $changeTown = $_POST['changeTown'];
 
-while(mysqli_stmt_fetch($selectMaxId)) {
-    $i = $maxId-1;
-}
+    $updateClient = mysqli_prepare($conn, "UPDATE klient SET imie_k = '$changeName', nazwisko_k = '$changeLastName', telefon_k = '$changeTelephone', email_K = '$changeEmail', firma_k = '$changeBusinnes', ulica_k = '$changeStreet', numerDomu_k = '$changeHouse', numerLokalu_k = '$changeLocal', kodPocztowy_k = '$changeZipCode', miejscowosc_k = '$changeTown' WHERE id_klienta = $constIndexClient");
+    mysqli_stmt_execute($updateClient);
 
-echo 'asd'. $i;
+    header("Location: findByClient.php");
+  }
 
+  if(isset($_POST['confirmDevice'])) {
+
+    $constIndexDev = $_POST['constIndexDev'];
+    $changeSerialNumber = $_POST['changeSerialNumber'];
+    $changeProducent = $_POST['changeProducent'];
+    $changeModel = $_POST['changeModel'];
+    $changeCategory = $_POST['changeCategory'];
+
+
+    $updateDevice = mysqli_prepare($conn, "UPDATE sprzet SET nr_seryjny = '$changeSerialNumber', producent = '$changeProducent', model = '$changeModel', kategoria='$changeCategory' WHERE id_sprzetu = $constIndexDev");
+    mysqli_stmt_execute($updateDevice);
+
+    header("Location: findByClient.php");
+} 
 
 ?>

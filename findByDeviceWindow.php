@@ -127,22 +127,22 @@
                 <form action='findByDeviceWindow.php' method='post'>
                     <ul>
                         <div style='display: none;'>
-                            <input type='text' name='constIndexDev' value='$statId'>
+                            <input type='text' name='constIndexDesc' value='$statId'>
                         </div>
-                        <li>Data Zmiany: <span class='changeSpan'>$statDate</span><input type='date' class='newDate'></li>
+                        <li>Data Zmiany: <span class='changeSpan'>$statDate</span><input type='date' class='newDate' name='newDate'></li>
                         <li>
                             Status: <span class='changeSpan'>$status</span>
-                            <select class='newDate'>
-                                <option>Przyjęte w oddziale</option>
-                                <option>W trakcie naprawy</option>
-                                <option>Gotowe do odbioru</option>
+                            <select class='newDate' name='newOp'>
+                                <option name='newOp'>Przyjęte w oddziale</option>
+                                <option name='newOp'>W trakcie naprawy</option>
+                                <option name='newOp'>Gotowe do odbioru</option>
                             </select>
                         </li>
                         <li>Opis Zgłoszenia:</br> $notDesc</li>
                         </br>
 
                         <li>Data zgłoszenia: $notFilingDate</li>
-                        <li>Data odbioru: <span class='changeSpan'>$notReceipeDate</span><input type='date' class='newDate'></li>
+                        <li>Data odbioru: <span class='changeSpan'>$notReceipeDate</span><input type='date' class='newDate' name='newReceipeDate'></li>
                         <li>Opis czynności: </br> $serviceDesc</br></li>
                         </br>
 
@@ -257,7 +257,13 @@
         header("Location: findByDevice.php");
     }
 
+    if(isset($_POSTS['confirmDesc'])) {
+        $newDate = $_POST['newDate'];
+        $newOp = $_POST['newOp']; //status
+        $newReceipeDate = $_POST['newReceipeDate']; //data odbioru
 
+        // $updateDescription = mysqli_prepare($conn, "");
+    }
 ?>
 
 <script src='js/findByEmpWindow.js'></script>

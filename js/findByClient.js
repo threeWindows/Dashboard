@@ -1,138 +1,80 @@
-var element = document.querySelectorAll(".element");
-var windowWithDatas = document.getElementById('windowWithDatas');
+const updateData = document.getElementById('updateData');
+const confirm = document.getElementById('confirm');
+const span = document.querySelectorAll('.dataContainer span');
+const input = document.querySelectorAll(".dataContainer .inp");
 
-const nameAndLastName = document.getElementById('nameAndLastName');
-const phoneNumber = document.getElementById('phoneNumber');
-const emailAdress = document.getElementById('emailAdress');
-const businnesName = document.getElementById('businnesName');
-const dwellingPlace = document.getElementById('dwellingPlace');
-const clientZipCode = document.getElementById('clientZipCode');
-const clientCity = document.getElementById('clientCity');
+const employeeData = [];
+const inputEmployee = [];
 
-const notSerialNumber = document.getElementById('notSerialNumber');
-const notProducent = document.getElementById('notProducent');
-const notModel = document.getElementById('notModel');
-const notCategory = document.getElementById('notCategory');
+updateData.addEventListener('click', () => {
+    confirm.style.setProperty('display', 'block');
+    employeeData.length = 0;
+    inputEmployee.length = 0;
 
-const span = document.querySelectorAll(".panel ul li span");
-
-
-var index;
-const changeData = document.getElementById('changeData');
-const changeValueInputs = document.querySelectorAll(".panel ul li input");
-
-element.forEach(function (el) {
-  el.addEventListener('click', () => {
-    windowWithDatas.style.setProperty('display', 'block');
-
-    index = el.getAttribute('index');
-
-    var name = el.getAttribute('name');
-    var lastName = el.getAttribute('lastName');
-    var phone = el.getAttribute('phone');
-    var email = el.getAttribute('email');
-    var businnes = el.getAttribute('businnes');
-    var street = el.getAttribute('street');
-    var houseNumbK = el.getAttribute('houseNumbK');
-    var localNumbK = el.getAttribute('localNumbK');
-    var zipCodeK = el.getAttribute('zipCodeK');
-    var townK = el.getAttribute('townK');
-    var serialNumbS = el.getAttribute('serialNumbS');
-    var producentS = el.getAttribute('producentS');
-    var modelS = el.getAttribute('modelS');
-    var categoryS = el.getAttribute('categoryS');
-
-    nameAndLastName.textContent = name + ' ' + lastName;
-    phoneNumber.textContent = phone;
-    emailAdress.textContent = email;
-    businnesName.textContent = businnes;
-    dwellingPlace.textContent = `${street} ${houseNumbK} ${localNumbK}`;
-    clientZipCode.textContent = zipCodeK;
-    clientCity.textContent = townK;
-
-    notSerialNumber.textContent = serialNumbS;
-    notProducent.textContent = producentS;
-    notModel.textContent = modelS;
-    notCategory.textContent = categoryS;
-
-    changeData.addEventListener('click', () => {
-  
-      changeValueInputs.forEach(el => {
-        el.style.setProperty('display', 'inline-block');
-      })
-    
-      for(let i=0;i<changeValueInputs.length;i++) {
-            changeValueInputs[0].value = phone;
-            changeValueInputs[1].value = email;
-            changeValueInputs[2].value = businnes;
-            changeValueInputs[3].value = `${street} ${houseNumbK} ${localNumbK}`;
-            changeValueInputs[4].value = zipCodeK;
-            changeValueInputs[5].value = townK;
-    
-            changeValueInputs[6].value = serialNumbS;
-            changeValueInputs[7].value = producentS;
-            changeValueInputs[8].value = modelS;
-            changeValueInputs[9].value = categoryS;
-      }
-        
-      changeUpdatedData.style.setProperty('display', 'inline-block');
-      changeData.style.setProperty('display', 'none');
-    
-      span.forEach((el) => {
-        el.style.setProperty('display', 'none');
-      })
+    span.forEach(spa => {
+        if(spa.getAttribute('i') == updateData.getAttribute('i')) {
+            spa.style.setProperty('display', 'none');
+            employeeData.push(spa.textContent);
+        }
     })
-  })
-});
+
+    input.forEach(el => {
+        if(el.getAttribute('i') == updateData.getAttribute('i')) {
+            el.style.setProperty('display', 'inline-block')
+            inputEmployee.push(el);
+        }
+    })
+
+    for(let x=0;x<employeeData.length;x++) {
+        inputEmployee[x].value = employeeData[x];
+    }
 
 
-const leave = document.getElementById('leave');
-const changeUpdatedData = document.getElementById('changeUpdatedData');
-
-leave.addEventListener('click', () => {
-  windowWithDatas.style.setProperty('display', 'none');
-
-  span.forEach((el) => {
-    el.style.setProperty('display', 'inline-block');
-  })
-
-  changeValueInputs.forEach(el => {
-    el.style.setProperty('display', 'none');
-  })
-
-  changeUpdatedData.style.setProperty('display', 'none');
-  changeData.style.setProperty('display', 'inline-block');
+    updateData.style.setProperty('display', 'none');
 })
 
-changeUpdatedData.addEventListener('click', () => {
-  changeUpdatedData.setAttribute('value', index);
-
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "findByClient.php", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      console.log(xhr.responseText);
-    }
-  };
-
-  xhr.send("index=" + index);
-})
+confirm.addEventListener('click', () => {
+    updateData.style.setProperty('display', 'block');
+    confirm.style.setProperty('display', 'none');
+})  
 
 
-const delateUser = document.getElementById('delateUser');
 
-delateUser.addEventListener('click', () => {
-  delateUser.setAttribute('value', index);
+const updateDevData = document.querySelectorAll('.updateDevData');
+const confirmDevice = document.querySelectorAll('.confirmDevice');
 
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "findByClient.php", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      console.log(xhr.responseText);
-    }
-  };
+const inpTab = [];
+const spanTab = [];
 
-  xhr.send("index=" + index);
+updateDevData.forEach(el => {
+    el.addEventListener('click', () => {
+        spanTab.length = 0;
+        inpTab.length = 0;
+
+        span.forEach(spa => {
+          if(spa.getAttribute('i') == el.getAttribute('i')) {
+            spa.style.setProperty('display', 'none');
+            spanTab.push(spa.textContent);
+          }
+        })
+  
+        input.forEach(inp => {
+            if(inp.getAttribute('i') == el.getAttribute('i')) {
+                inp.style.setProperty('display', 'inline-block')
+                inpTab.push(inp);
+            }
+        })
+
+        confirmDevice.forEach(confDev => {
+          if(confDev.getAttribute('i') == el.getAttribute('i')) {
+            confDev.style.setProperty('display', 'block');
+          }
+        })
+
+        for(let x=0;x<spanTab.length;x++) {
+          inpTab[x].value = spanTab[x];
+        }
+        
+        el.style.setProperty('display', 'none');
+  })
 })
