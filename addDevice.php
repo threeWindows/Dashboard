@@ -15,6 +15,8 @@
         mysqli_stmt_bind_param($kwerenda, 'ssss', $nrSeryjny, $producent, $model, $kategoria);
         mysqli_stmt_execute($kwerenda);
 
+        //as
+
         if(mysqli_stmt_affected_rows($kwerenda)==1){
                 header("Location: ../Projekt/rejestracjaSprzetu.php");
             }else{
